@@ -50,9 +50,13 @@ fun Screen(modifier: Modifier = Modifier) {
     }
 
     Column(
-        modifier = modifier.padding(16.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.weight(1f))
+
         Text(
             text = displayValue,
             style = MaterialTheme.typography.headlineLarge.copy(
@@ -66,34 +70,40 @@ fun Screen(modifier: Modifier = Modifier) {
             maxLines = 1
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
-        Row(modifier = Modifier.fillMaxWidth()) {
-            CalculatorButton("7", onClick = { updateDisplay("7") }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("8", onClick = { updateDisplay("8") }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("9", onClick = { updateDisplay("9") }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("+", onClick = { selectOperation("+") }, Modifier.weight(1f).padding(8.dp))
-        }
+        // Botões
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.Bottom
+        ) {
+            Row(modifier = Modifier.fillMaxWidth()) {
+                CalculatorButton("7", onClick = { updateDisplay("7") }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("8", onClick = { updateDisplay("8") }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("9", onClick = { updateDisplay("9") }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("+", onClick = { selectOperation("+") }, Modifier.weight(1f).padding(8.dp))
+            }
 
-        Row(modifier = Modifier.fillMaxWidth()) {
-            CalculatorButton("4", onClick = { updateDisplay("4") }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("5", onClick = { updateDisplay("5") }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("6", onClick = { updateDisplay("6") }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("-", onClick = { selectOperation("-") }, Modifier.weight(1f).padding(8.dp))
-        }
+            Row(modifier = Modifier.fillMaxWidth()) {
+                CalculatorButton("4", onClick = { updateDisplay("4") }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("5", onClick = { updateDisplay("5") }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("6", onClick = { updateDisplay("6") }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("-", onClick = { selectOperation("-") }, Modifier.weight(1f).padding(8.dp))
+            }
 
-        Row(modifier = Modifier.fillMaxWidth()) {
-            CalculatorButton("1", onClick = { updateDisplay("1") }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("2", onClick = { updateDisplay("2") }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("3", onClick = { updateDisplay("3") }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("*", onClick = { selectOperation("*") }, Modifier.weight(1f).padding(8.dp))
-        }
+            Row(modifier = Modifier.fillMaxWidth()) {
+                CalculatorButton("1", onClick = { updateDisplay("1") }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("2", onClick = { updateDisplay("2") }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("3", onClick = { updateDisplay("3") }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("*", onClick = { selectOperation("*") }, Modifier.weight(1f).padding(8.dp))
+            }
 
-        Row(modifier = Modifier.fillMaxWidth()) {
-            CalculatorButton("0", onClick = { updateDisplay("0") }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("C", onClick = { displayValue = "0" }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("=", onClick = { calculate() }, Modifier.weight(1f).padding(8.dp))
-            CalculatorButton("/", onClick = { selectOperation("/") }, Modifier.weight(1f).padding(8.dp))
+            Row(modifier = Modifier.fillMaxWidth()) {
+                CalculatorButton("0", onClick = { updateDisplay("0") }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("C", onClick = { displayValue = "0" }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("=", onClick = { calculate() }, Modifier.weight(1f).padding(8.dp))
+                CalculatorButton("/", onClick = { selectOperation("/") }, Modifier.weight(1f).padding(8.dp))
+            }
         }
     }
 }
@@ -107,7 +117,7 @@ fun CalculatorButton(text: String, onClick: () -> Unit, modifier: Modifier = Mod
             containerColor = Color(0xFF6200EE),
             contentColor = Color.White
         ),
-        modifier = modifier.size(64.dp)
+        modifier = modifier.size(80.dp)
     ) {
         Text(
             text = text,
